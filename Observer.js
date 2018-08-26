@@ -1,5 +1,5 @@
 //将观察者放在闭包中，当页面加载就立即执行
-var Obverser = (function() {
+var Observer = (function() {
     //防止消息队列暴漏而被篡改故将消息容器作为静态私有变量保存
     var __message = {}
     return {
@@ -42,3 +42,8 @@ var Obverser = (function() {
         }
     }
 })()
+
+Observer.regist('test',function(e){
+    console.log(e.type,e.args.msg);
+})
+Observer.fire('test',{msg:'传递参数'});   //test传递参数
